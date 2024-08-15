@@ -1,0 +1,92 @@
+#include <iostream>
+#include <iomanip>
+using namespace std;
+// Currency Converter by Jitendra
+int main() {
+    // Exchange rates relative to INR
+    const double inrToUsd = 1.0 / 82.75;   // 1 INR = 1/82.75 USD
+    const double inrToEur = 1.0 / 89.00;   // 1 INR = 1/89.00 EUR
+    const double inrToJpy = 1.0 / 0.56;    // 1 INR = 1/0.56 JPY
+    const double inrToRub = 1.0 / 1.09;    // 1 INR = 1/1.09 RUB
+    const double inrToKwd = 1.0 / 272.00;  // 1 INR = 1/272.00 KWD
+
+    // Conversion rates between currencies
+    double amount;
+    int fromCurrency, toCurrency;
+    cout << "Currency Converter" << endl;
+    cout << "1. INR (Indian Rupee)" << endl;
+    cout << "2. USD (US Dollar)" << endl;
+    cout << "3. JPY (Japanese Yen)" << endl;
+    cout << "4. EUR (Euro)" << endl;
+    cout << "5. RUB (Russian Ruble)" << endl;
+    cout << "6. KWD (Kuwaiti Dinar)" << endl;
+
+    cout << "Select the currency you want to convert from (1-6): ";
+    cin >> fromCurrency;
+
+    cout << "Enter amount in selected currency: ";
+    cin >> amount;
+
+    cout << "Select the currency you want to convert to (1-6): ";
+    cin >> toCurrency;
+
+    // Convert to INR if not already in INR
+    double amountInInr;
+
+    switch (fromCurrency) {
+        case 1: // INR
+            amountInInr = amount;
+            break;
+        case 2: // USD
+            amountInInr = amount * 82.75;
+            break;
+        case 3: // JPY
+            amountInInr = amount * 0.56;
+            break;
+        case 4: // EUR
+            amountInInr = amount * 89.00;
+            break;
+        case 5: // RUB
+            amountInInr = amount * 1.09;
+            break;
+        case 6: // KWD
+            amountInInr = amount * 272.00;
+            break;
+        default:
+            cout << "Invalid currency selection." << endl;
+            return 1;
+    }
+
+    // Convert from INR to the desired currency
+    double finalAmount;
+    switch (toCurrency) {
+        case 1: // INR
+            finalAmount = amountInInr;
+            break;
+        case 2: // USD
+            finalAmount = amountInInr * inrToUsd;
+            break;
+        case 3: // JPY
+            finalAmount = amountInInr * inrToJpy;
+            break;
+        case 4: // EUR
+            finalAmount = amountInInr * inrToEur;
+            break;
+        case 5: // RUB
+            finalAmount = amountInInr * inrToRub;
+            break;
+        case 6: // KWD
+            finalAmount = amountInInr * inrToKwd;
+            break;
+        default:
+            cout << "Invalid currency selection." << endl;
+            return 1;
+    }
+
+ 
+    cout << fixed << setprecision(2);
+    cout << "Converted amount: " << finalAmount << endl;
+
+    return 0;
+}
+
